@@ -52,7 +52,7 @@ metadata:
   name: amq-consumer-2
   namespace: amq-ha
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: amq-consumer-2
