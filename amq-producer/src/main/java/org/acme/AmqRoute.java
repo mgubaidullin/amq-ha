@@ -14,9 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AmqRoute extends EndpointRouteBuilder {
     private static final Logger LOGGER = Logger.getLogger(AmqRoute.class.getName());
 
-    private AtomicInteger counter = new AtomicInteger();
+    private AtomicInteger counter = new AtomicInteger(0);
     private final String period = "1s";
-    private final int repeatCount = 1000000;
+    private final int repeatCount = 1000;
 
     @ConfigProperty(name = "hostname")
     String hostname;
@@ -38,7 +38,7 @@ public class AmqRoute extends EndpointRouteBuilder {
     }
 
     private void process(Exchange exchange) {
-        exchange.getIn().setBody(hostname + "," + System.currentTimeMillis() + "," + counter.getAndIncrement());
+        exchange.getIn().setBody(hostname + ", " + System.currentTimeMillis() + ", " + counter.getAndIncrement());
     }
 
     @Named("activemq")

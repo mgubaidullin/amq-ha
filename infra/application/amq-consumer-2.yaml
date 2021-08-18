@@ -60,6 +60,7 @@ spec:
     metadata:
       labels:
         app: amq-consumer-2
+        app.kubernetes.io/part-of: amq-consumer
     spec:
       containers:
       - name: amq-consumer-2
