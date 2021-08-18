@@ -5,8 +5,8 @@ namespace: amq-ha
 
 resources:
   - amq-consumer-0.yaml
-  - amq-consumer-1.yaml
-  - amq-consumer-2.yaml
+  # - amq-consumer-1.yaml
+  # - amq-consumer-2.yaml
   - amq-producer-0.yaml
   - amq-producer-1.yaml
   - amq-producer-2.yaml

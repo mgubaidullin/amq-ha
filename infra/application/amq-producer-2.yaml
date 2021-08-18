@@ -52,7 +52,7 @@ metadata:
   name: amq-producer-2
   namespace: amq-ha
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: amq-producer-2

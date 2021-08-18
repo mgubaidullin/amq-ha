@@ -16,7 +16,7 @@ public class AmqRoute extends EndpointRouteBuilder {
 
     private AtomicInteger counter = new AtomicInteger(0);
     private final String period = "1s";
-    private final int repeatCount = 1000;
+    private final int repeatCount = 10;
 
     @ConfigProperty(name = "hostname")
     String hostname;

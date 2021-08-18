@@ -11,7 +11,6 @@ Login to OpenShift
 oc login https://host:port
 oc project amq-ha
 ```
-
 Create namespace and install operator
 ```
 oc apply -k infra/cluster
@@ -20,21 +19,19 @@ Create AMQ Cluster
 ```
 oc apply -k infra/amq
 ```
-Deploy applications (producers and consumers)
+Wait while 3 AMQ Brokers are up and running and deploy applications (1 producers and 1 consumer1)
 ```
 oc apply -k infra/application
 ```
 
-Show consumers logs
+### Demo
+1. Check AMQ Console to check that 1000 messages are in each broker
+2. Scale down AQM Cluster to 2 brokers through OpenShift UI
+3. Check pods in namespace (One terminated and then drawniing start/complete)
+4. Check that 2 brokers have same 3000 messages
+5. Start consumer through OpenShift UI
+6. Show consumers logs
 ```
 oc get pods --no-headers --output='json' -l app.kubernetes.io/part-of=amq-consumer -o=jsonpath='{.items[0].metadata.name}' | xargs oc logs -f
-oc get pods --no-headers --output='json' -l app.kubernetes.io/part-of=amq-consumer -o=jsonpath='{.items[1].metadata.name}' | xargs oc logs -f
-oc get pods --no-headers --output='json' -l app.kubernetes.io/part-of=amq-consumer -o=jsonpath='{.items[2].metadata.name}' | xargs oc logs -f
 ```
-
-Kill broker pod
-```
-oc delete pod amq-ha-ss-0
-```
-
-Scale AMQ Cluster to 2 nodes throught UI
+Check that all 3000 messages are received
