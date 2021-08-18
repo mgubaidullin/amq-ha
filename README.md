@@ -1,4 +1,4 @@
-# AMQ HA in OpenShift Demo
+# AMQ Pod Draining in OpenShift Demo
 
 ## How to
 ### Prerequisites
